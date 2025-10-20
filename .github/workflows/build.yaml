@@ -46,7 +46,7 @@ jobs:
       
       - name: Build Docker image
         shell: pwsh
-        run: docker build -f docker/Dockerfile -t moviereview:latest artifact_zip/
+        run: docker build -f docker/Dockerfile -t moviereview:latest .
 
 
 
