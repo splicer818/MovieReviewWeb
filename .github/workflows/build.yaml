@@ -19,7 +19,7 @@ jobs:
       run: nuget restore src/MovieReview-Angular/MovieReview.Web.sln
 
     - name: Build and publish
-      run: msbuild src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj /p:Configuration=Release /p:OutputPath=publish/
+      run: msbuild src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj /p:Configuration=Release /p:DeployOnBuild=true /p:OutputPath=publish/
 
     - name: Upload published output
       uses: actions/upload-artifact@v4
