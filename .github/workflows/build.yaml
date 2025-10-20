@@ -26,3 +26,16 @@ jobs:
       with:
         name: PublishedOutput
         path: src/MovieReview-Angular/MovieReview.Web/obj/Release/Package/PackageTmp/**
+
+  docker:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - name: Checkout repo (for Dockerfile)
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PublishedOutput
+          path: artifact_zip
