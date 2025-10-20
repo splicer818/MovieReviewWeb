@@ -16,7 +16,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.3
 
     - name: Restore NuGet packages
-      run: nuget restore src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj
+      run: nuget restore src/MovieReview-Angular/MovieReview.Web.sln
 
     - name: Build and publish
       run: msbuild src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj /p:Configuration=Release /p:OutputPath=publish/
