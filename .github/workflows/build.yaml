@@ -22,7 +22,7 @@ jobs:
       run: msbuild src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj /p:Configuration=Release /p:OutputPath=publish/
 
     - name: Upload published output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: PublishedOutput
         path: publish/
