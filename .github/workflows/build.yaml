@@ -1,0 +1,28 @@
+name: Build MovieReview Website
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3
+
+    - name: Restore NuGet packages
+      run: nuget restore src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj
+
+    - name: Build and publish
+      run: msbuild src/MovieReview-Angular/MovieReview.Web/MovieReview.Web.csproj /p:Configuration=Release /p:OutputPath=publish/
+
+    - name: Upload published output
+      uses: actions/upload-artifact@v3
+      with:
+        name: PublishedOutput
+        path: publish/
