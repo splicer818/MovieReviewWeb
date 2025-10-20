@@ -52,7 +52,7 @@ jobs:
       
       - name: Build Docker image
         shell: pwsh
-        run: docker build -f docker/Dockerfile -t moviereview:latest .
+        run: docker build -f docker/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/moviereview:latest .
 
       - name: Verify image built successfully
         run: docker images
