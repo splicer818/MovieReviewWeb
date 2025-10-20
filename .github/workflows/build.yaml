@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: PublishedOutput
-        path: publish/
+        path: src/WebApp/obj/Release/Package/PackageTmp/
