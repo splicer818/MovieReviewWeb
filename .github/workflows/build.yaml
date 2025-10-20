@@ -39,6 +39,10 @@ jobs:
         with:
           name: PublishedOutput
           path: artifact_zip
+      
+      - name: List downloaded files
+        shell: pwsh
+        run: Get-ChildItem -Recurse artifact_zip
 
       - name: Extract build artifact
         shell: pwsh
