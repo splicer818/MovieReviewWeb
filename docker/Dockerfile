@@ -4,7 +4,7 @@ EXPOSE 19595
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
 
-COPY ./src/WebApp/ 'C:\\inetpub\\wwwroot'
+COPY ./artifact_zip/ 'C:\\inetpub\\wwwroot'
 
 COPY ./docker/Start.ps1 'C:\\Start.ps1'
 
