@@ -43,13 +43,10 @@ jobs:
       - name: List downloaded files
         shell: pwsh
         run: Get-ChildItem -Recurse artifact_zip
-
-      - name: Extract build artifact
+      
+      - name: Build Docker image
         shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force -Path app | Out-Null
-          Expand-Archive -Path "artifact_zip\PublishedOutput.zip" -DestinationPath "app" -Force
+        run: docker build -f docker/Dockerfile -t moviereview:latest artifact_zip/
 
-      - name: List extracted files
-        shell: pwsh
-        run: Get-ChildItem -Recurse app
+
+
