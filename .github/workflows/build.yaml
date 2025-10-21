@@ -59,13 +59,18 @@ jobs:
       
       - name: Build Docker image
         shell: pwsh
-        run: docker build -f docker/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/moviereview:latest -t ${{ secrets.DOCKER_USERNAME }}/myapp:${{ env.VERSION_TAG }} .
+        run: docker build -f docker/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/moviereview:latest -t ${{ secrets.DOCKER_USERNAME }}/moviereview:${{ env.VERSION_TAG }} .
 
       - name: Verify image built successfully
         run: docker images
 
-      - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/moviereview:latest
+      - name: Push Docker images
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/moviereview:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/moviereview:${{ env.VERSION_TAG }}
+
+      - name: Output image tags
+        run: echo "Pushed tags: latest and ${{ env.VERSION_TAG }}"
 
 
 
