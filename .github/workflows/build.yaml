@@ -49,6 +49,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Set version tag
+        id: vars
+        run: |
+          $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+          $sha = (git rev-parse --short HEAD)
+          echo "VERSION_TAG=$timestamp-$sha" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
       
       - name: Build Docker image
         shell: pwsh
