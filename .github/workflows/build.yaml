@@ -69,8 +69,6 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/moviereview:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/moviereview:${{ env.VERSION_TAG }}
 
-      - name: Output image tags
-        run: echo "Pushed tags: latest and ${{ env.VERSION_TAG }}"
 
 
 
